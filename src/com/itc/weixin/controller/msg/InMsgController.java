@@ -28,19 +28,19 @@ public abstract class InMsgController implements IProcessInMsg
 	private MsgService service = null;
 	private String userId = null;
 	private String event = null;
-	private static String serviceClass = null;
+	private static Class<?> clazz = null;
 
 	public InMsgController()
 	{
-		if(null == serviceClass)
-		{
-			serviceClass = PropKit.get("DefaultMsgService");
-			if(StrKit.isBlank(serviceClass))
-				throw new RuntimeException("请确认在配置文件中已配置DefaultMsgService！");
-		}
 		try
 		{
-			Class<?> clazz = Class.forName(serviceClass);
+			if(null == clazz)
+			{
+				String serviceClass = PropKit.get("DefaultMsgService");
+				if(StrKit.isBlank(serviceClass))
+					throw new RuntimeException("请确认在配置文件中已配置DefaultMsgService！");
+				clazz = Class.forName(serviceClass);
+			}
 			service = (MsgService) clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e)
 		{
