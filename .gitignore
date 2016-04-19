@@ -1,0 +1,36 @@
+plan.txt
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+
+*.bak
+*.class
+*.tmp
+*.log
+/bin/
+build.sh
+integration-repo
+/build/
+
+# IDEA metadata and output dirs
+.idea
+*.iml
+*.ipr
+*.iws
+
+*.jar
+/webapp/WEB-INF/classes/
+/webapp/WEB-INF/test-classes/
+/webapp/WEB-INF/target/
+
+a_little_config_pro.txt
+
+dev_plan.txt
+
+# mac
+.DS_Store
