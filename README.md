@@ -1,7 +1,7 @@
-# Jfinal Weixin 极速开发
-JFinal Weixin 是基于 JFinal 的微信公众号极速开发 SDK，只需浏览 Demo 代码即可进行极速开发，自 JFinal Weixin 1.2 版本开始已添加对多公众号支持。
+# Itc Weixin 极速开发
+Itc Weixin 是基于 JFinal Weixin 和 JFinal 的二次开发的微信公众号开发SDK，主要增加了根据Event事件为click的二级路由功能。
 
-## 1、WeixinConfig配置
+## 1、Config配置
 `详情请见`：[JFinal weixin中的WeixinConfig配置](http://git.oschina.net/jfinal/jfinal-weixin/wikis/JFinal-weixin%E4%B8%AD%E7%9A%84WeixinConfig%E9%85%8D%E7%BD%AE)
 
 ## 2、WeixinMsgController
