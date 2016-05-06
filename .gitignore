@@ -12,6 +12,7 @@ plan.txt
 *.class
 *.tmp
 *.log
+*.pmd
 /bin/
 build.sh
 integration-repo
