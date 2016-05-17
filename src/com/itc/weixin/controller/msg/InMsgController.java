@@ -28,21 +28,27 @@ public abstract class InMsgController implements IProcessInMsg
 	private MsgService service = null;
 	private String userId = null;
 	private String event = null;
-	private static Class<?> clazz = null;
+	private static final Class<?> clazz = init();	//默认服务类仅初始化一次
 
+	static Class<?> init()
+	{
+		String serviceClass = PropKit.get("DefaultMsgService");
+		if(StrKit.isBlank(serviceClass))
+			throw new RuntimeException("请确认在配置文件中已配置DefaultMsgService！");
+		try {
+			return Class.forName(serviceClass);
+		} catch (ClassNotFoundException e) {
+			logger.error("请确认DefaultMsgService的Class文件是否存在！！", e);
+			return null;
+		}
+	}
+	
 	public InMsgController()
 	{
 		try
 		{
-			if(null == clazz)
-			{
-				String serviceClass = PropKit.get("DefaultMsgService");
-				if(StrKit.isBlank(serviceClass))
-					throw new RuntimeException("请确认在配置文件中已配置DefaultMsgService！");
-				clazz = Class.forName(serviceClass);
-			}
 			service = (MsgService) clazz.newInstance();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e)
+		} catch (InstantiationException | IllegalAccessException e)
 		{
 			logger.error("请确认DefaultMsgService的配置是否正确！！", e);
 		}
